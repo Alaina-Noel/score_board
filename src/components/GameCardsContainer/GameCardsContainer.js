@@ -39,7 +39,7 @@ const GameCardsContainer = ({ games }) => {
       {games.map((game) => {
         if (game.game_teams) {
           return (
-            <div className="game-card" key={game.game_teams[0].id}>
+            <div className="game-card-data-container" key={game.game_teams[0].id}>
               <GameCard
                 key={game.game_teams[0].id}
                 id={game.game_teams[0].id}
@@ -49,6 +49,8 @@ const GameCardsContainer = ({ games }) => {
                 homeTeamName={game.game_teams[1].team.name}
                 gameStatus={gameStatus(game.status_id)}
                 sportName={sportName(game.sport_id)}
+                awayScore={game.game_teams[0].score}
+                homeScore={game.game_teams[0].score}
                />
             </div>
           );
