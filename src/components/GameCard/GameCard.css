@@ -1,0 +1,7 @@
+.game-card {
+  display: flex;
+  border: 5px solid lightgrey;
+  width: 100%;
+  justify-content: space-between;
+  flex-direction: column;
+}
