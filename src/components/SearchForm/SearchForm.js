@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './SearchForm.css';
 
-const SearchForm = ({ queryGames }) => {
+const SearchForm = ({ setGames, setErrorMessage }) => {
   const [searchValue, setSearchValue] = useState("");
   const [domError, setDomError] = useState("");
 
@@ -15,6 +15,15 @@ const SearchForm = ({ queryGames }) => {
     }
   };
 
+  const queryGames = (searchValue) => {
+    const endpoint = `https://api.scorebooklive.com/v2/games?date=${searchValue}&priority_order=true`;
+    fetch(endpoint)
+      .then(response => response.json())
+      .then(data => setGames(data.data))
+      .catch(error => {
+        setErrorMessage(error.message);
+      });
+  }
   const clearInputs = () => { 
     setSearchValue("");
     setDomError("");
