@@ -22,6 +22,15 @@ const GameCardsContainer = ({ games }) => {
     return allSports[sportId];
   };
 
+  const gameStatus = (statusId) => {
+    const allStatus = {
+      1: "Upcoming",
+      2: "In Progress",
+      3: "Final"
+    }
+    return allStatus[statusId];
+  };
+
   if(!games){
     return <div>Type a date and search for a game</div>
   }
@@ -38,7 +47,7 @@ const GameCardsContainer = ({ games }) => {
                 homePhoto={game.game_teams[1].team.image}
                 awayTeamName={game.game_teams[0].team.name}
                 homeTeamName={game.game_teams[1].team.name}
-                gameStatus={game.status}
+                gameStatus={gameStatus(game.status_id)}
                 sportName={sportName(game.sport_id)}
                />
             </div>
