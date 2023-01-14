@@ -2,7 +2,7 @@ import React, {useState} from "react";
 // import {Link} from 'react-router-dom' //TODO: add a link to team info
 import './GameCard.css'
 
-export const GameCard = ({ awayPhoto, homePhoto, awayMascotName, homeMascotName, gameStatus, sport }) => {
+export const GameCard = ({ awayPhoto, homePhoto, awayTeamName, homeTeamName, gameStatus, sport }) => {
     return(
         <div className='game-card'>
             <div className='game-card-title'>
