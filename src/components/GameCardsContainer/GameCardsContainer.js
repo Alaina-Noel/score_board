@@ -1,5 +1,6 @@
 import React from 'react';
 import './GameCardsContainer.css';
+import GameCard from '../GameCard/GameCard.js';
 
 const GameCardsContainer = ({ games }) => {
   const sportName = (sportId) => {
@@ -31,13 +32,16 @@ const GameCardsContainer = ({ games }) => {
         if (game.game_teams) {
           return (
             <div className="game-card" key={game.game_teams[0].id}>
-              <p> away photo {game.game_teams[0].team.image}</p>
-              <p> home photo {game.game_teams[1].team.image}</p>
-              <p>game team id: {game.game_teams[0].id}</p>
-              <p> away team name: {game.game_teams[0].team.name}</p>
-              <p> home team name: {game.game_teams[1].team.name}</p>
-              <p>{game.status}</p>
-              <p> sport: {sportName(game.sport_id)}</p>
+              <GameCard
+                key={game.game_teams[0].id}
+                id={game.game_teams[0].id}
+                awayPhoto={game.game_teams[0].team.image}
+                homePhoto={game.game_teams[1].team.image}
+                awayTeamName={game.game_teams[0].team.name}
+                homeTeamName={game.game_teams[1].team.name}
+                gameStatus={game.status}
+                sportName={sportName(game.sport_id)}
+               />
             </div>
           );
         }
