@@ -19,7 +19,6 @@ const GameCardsContainer = ({ games }) => {
       12: "Golf",
       13: "Tennis"
     };
-    console.log(allSports[9])
     return allSports[sportId];
   };
 
