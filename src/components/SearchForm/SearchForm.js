@@ -22,7 +22,7 @@ const SearchForm = ({ queryGames }) => {
 
   return (
     <div className="search-area">
-      <h3>Find A Game by Date: CHange this later</h3>
+      <h3>Type in a date in the form 2023-01-25 to find a game</h3>
       <input
         type="text"
         placeholder="Search for a List of Games by Date"
