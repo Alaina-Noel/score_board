@@ -16,7 +16,7 @@ const SearchForm = ({ setGames, setErrorMessage }) => {
   };
 
   const queryGames = (searchValue) => {
-    const endpoint = `https://api.scorebooklive.com/v2/games?date=${searchValue}&priority_order=true`;
+    const endpoint = `https://api.scorebooklive.com/v2/games?date=${searchValue}&priority_order=true&status_id=2&status_id=3`;
     fetch(endpoint)
       .then(response => response.json())
       .then(data => setGames(data.data))

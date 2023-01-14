@@ -19,8 +19,16 @@ const GameCardsContainer = ({ games }) => {
       12: "Golf",
       13: "Tennis"
     };
-    console.log(allSports[9])
     return allSports[sportId];
+  };
+
+  const gameStatus = (statusId) => {
+    const allStatus = {
+      1: "Upcoming",
+      2: "In Progress",
+      3: "Final"
+    }
+    return allStatus[statusId];
   };
 
   if(!games){
@@ -31,7 +39,7 @@ const GameCardsContainer = ({ games }) => {
       {games.map((game) => {
         if (game.game_teams) {
           return (
-            <div className="game-card" key={game.game_teams[0].id}>
+            <div className="game-card-data-container" key={game.game_teams[0].id}>
               <GameCard
                 key={game.game_teams[0].id}
                 id={game.game_teams[0].id}
@@ -39,8 +47,10 @@ const GameCardsContainer = ({ games }) => {
                 homePhoto={game.game_teams[1].team.image}
                 awayTeamName={game.game_teams[0].team.name}
                 homeTeamName={game.game_teams[1].team.name}
-                gameStatus={game.status}
+                gameStatus={gameStatus(game.status_id)}
                 sportName={sportName(game.sport_id)}
+                awayScore={game.game_teams[0].score}
+                homeScore={game.game_teams[0].score}
                />
             </div>
           );
