@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useState, useEffect} from "react";
 import './GameCardsContainer.css';
 import GameCard from '../GameCard/GameCard.js';
 
-const GameCardsContainer = ({ games }) => {
+const GameCardsContainer = ({ games, isPastGame }) => {
   const sportName = (sportId) => {
     const allSports = {
       1: "Basketball",
@@ -22,17 +22,21 @@ const GameCardsContainer = ({ games }) => {
     return allSports[sportId];
   };
 
-  const gameStatus = (statusId) => {
+  const gameStatus = (statusId, isPastGame) => {
     const allStatus = {
       1: "Upcoming",
       2: "In Progress",
       3: "Final"
     }
+    if (isPastGame) {
+      return allStatus[3];//The data was showing some past games as status_id of 1. This handles that error.
+    } else {
     return allStatus[statusId];
+    }
   };
 
   if(!games){
-    return <div>Type a date and search for a game</div>
+    return <div></div>
   }
   return (
     <div className="game-cards-container">
@@ -47,7 +51,7 @@ const GameCardsContainer = ({ games }) => {
                 homePhoto={game.game_teams[1].team.image}
                 awayTeamName={game.game_teams[0].team.name}
                 homeTeamName={game.game_teams[1].team.name}
-                gameStatus={gameStatus(game.status_id)}
+                gameStatus={gameStatus(game.status_id, isPastGame)}
                 sportName={sportName(game.sport_id)}
                 awayScore={game.game_teams[0].score}
                 homeScore={game.game_teams[0].score}

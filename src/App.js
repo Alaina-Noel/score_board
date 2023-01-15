@@ -6,14 +6,23 @@ import GameCardsContainer from './components/GameCardsContainer/GameCardsContain
 const App = () =>  {
   const [games, setGames] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isPastGame, setIsPastGame] = useState(false);
 
   return (
     <div className="App">
       <header className="App-header">
         <div className="body">
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-        <SearchForm setGames={setGames} setErrorMessage={setErrorMessage} />
-        <GameCardsContainer games={games} />
+        <SearchForm 
+          setGames={setGames} 
+          setErrorMessage={setErrorMessage} 
+          isPastGame={isPastGame}
+          setIsPastGame={setIsPastGame}
+        />
+        <GameCardsContainer 
+          games={games} 
+          isPastGame={isPastGame}
+        />
         </div>
       </header>
     </div>

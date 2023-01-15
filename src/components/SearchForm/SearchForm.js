@@ -1,22 +1,28 @@
 import React, { useState } from "react";
 import './SearchForm.css';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import GameCardsContainer from '../GameCardsContainer/GameCardsContainer.js'
 
-const SearchForm = ({ setGames, setErrorMessage }) => {
-  const [searchValue, setSearchValue] = useState("");
+const SearchForm = ({ setGames, setErrorMessage, setIsPastGame }) => {
+  const [searchedDate, setSearchedDate] = useState("");
+  const [currentDate] = useState(new Date());
   const [domError, setDomError] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (searchValue) {
-      queryGames(searchValue);
+    setIsPastGame(searchedDate < currentDate);
+    if (searchedDate) {
+      const date = searchedDate.toISOString().slice(0, 10);
+      queryGames(date);
       clearInputs();
     } else {
-      setDomError("Please enter a date");
+      setDomError("Please select a date");
     }
   };
 
-  const queryGames = (searchValue) => {
-    const endpoint = `https://api.scorebooklive.com/v2/games?date=${searchValue}&priority_order=true&status_id=2&status_id=3`;
+  const queryGames = (searchedDate) => {
+    const endpoint = `https://api.scorebooklive.com/v2/games?date=${searchedDate}&priority_order=true`;
     fetch(endpoint)
       .then(response => response.json())
       .then(data => setGames(data.data))
@@ -25,20 +31,21 @@ const SearchForm = ({ setGames, setErrorMessage }) => {
       });
   }
   const clearInputs = () => { 
-    setSearchValue("");
+    setSearchedDate("");
     setDomError("");
   };
 
   return (
     <div className="search-area">
-      <h3>Type in a date in the form 2023-01-25 to find a game</h3>
-      <input
-        type="text"
-        placeholder="Search for a List of Games by Date"
-        name="gme"
+      <h3>Select a date to find a game</h3>
+      <DatePicker
+        selected={searchedDate}
+        onChange={date => setSearchedDate(date)}
         className="search-input"
-        value={searchValue}
-        onChange={(e) => setSearchValue(e.target.value)}
+      />
+      <GameCardsContainer 
+        searchedDate={searchedDate} 
+        currentDate={new Date()} 
       />
       <button className="game-search-btn" onClick={(event) => handleSubmit(event)}>Search</button>
       {domError && <h4 className="error-message">{domError}</h4>}
