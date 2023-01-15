@@ -7,12 +7,14 @@ const GameCard = ({ awayPhoto, homePhoto, awayTeamName, homeTeamName, gameStatus
         <div className='game-card'>
             <div className='game-card-title'>
                 <div className="sport-name"> {sportName} </div> 
-                <div> {awayTeamName} at {homeTeamName}</div> 
-                <div>  {awayScore} - {homeScore} </div> 
-            </div>
+                <div className='team-names'>
+                    <div> {awayTeamName} at {homeTeamName}</div> 
+                    <div>  {awayScore} - {homeScore} </div> 
+                </div>
+                </div>
             <div className='team-logos-container'>
-            <img className='away-team-image' src={awayPhoto} alt='away-team-logo'/>
-            <img className='home-team-image' src={homePhoto} alt='home-team-logo'/>
+                <img className='away-team-image' src={awayPhoto} alt='away-team-logo'/>
+                <img className='home-team-image' src={homePhoto} alt='home-team-logo'/>
             </div>
             <div className="game-status"> {gameStatus} </div> 
         </div>

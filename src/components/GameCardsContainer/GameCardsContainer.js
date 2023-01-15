@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import './GameCardsContainer.css';
 import GameCard from '../GameCard/GameCard.js';
 
