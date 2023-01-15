@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import './SearchForm.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import GameCardsContainer from '../GameCardsContainer/GameCardsContainer.js'
 
 const SearchForm = ({ setGames, setErrorMessage }) => {
-  const [searchValue, setSearchValue] = useState("");
+  const [searchedDate, setSearchedDate] = useState("");
   const [domError, setDomError] = useState("");
+  const [currentDate, setCurrentDate] = useState(new Date());
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (searchValue) {
-      const date = searchValue.toISOString().slice(0, 10);
+    if (searchedDate) {
+      const date = searchedDate.toISOString().slice(0, 10);
       queryGames(date);
       clearInputs();
     } else {
@@ -18,17 +20,19 @@ const SearchForm = ({ setGames, setErrorMessage }) => {
     }
   };
 
-  const queryGames = (searchValue) => {
-    const endpoint = `https://api.scorebooklive.com/v2/games?date=${searchValue}&priority_order=true&status_id=2&status_id=3`;
+  const queryGames = (searchedDate) => {
+    const endpoint = `https://api.scorebooklive.com/v2/games?date=${searchedDate}&priority_order=true`;
     fetch(endpoint)
       .then(response => response.json())
       .then(data => setGames(data.data))
       .catch(error => {
         setErrorMessage(error.message);
       });
+    setCurrentDate(new Date());
   }
   const clearInputs = () => { 
-    setSearchValue("");
+    setSearchedDate("");
+    setCurrentDate(new Date());
     setDomError("");
   };
 
@@ -36,9 +40,13 @@ const SearchForm = ({ setGames, setErrorMessage }) => {
     <div className="search-area">
       <h3>Select a date to find a game</h3>
       <DatePicker
-        selected={searchValue}
-        onChange={date => setSearchValue(date)}
+        selected={searchedDate}
+        onChange={date => setSearchedDate(date)}
         className="search-input"
+      />
+      <GameCardsContainer 
+        searchedDate={searchedDate} 
+        currentDate={currentDate} 
       />
       <button className="game-search-btn" onClick={(event) => handleSubmit(event)}>Search</button>
       {domError && <h4 className="error-message">{domError}</h4>}

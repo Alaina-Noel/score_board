@@ -2,7 +2,8 @@ import React from 'react';
 import './GameCardsContainer.css';
 import GameCard from '../GameCard/GameCard.js';
 
-const GameCardsContainer = ({ games }) => {
+const GameCardsContainer = ({ games, currentDate, searchedDate }) => {
+  console.log("searched", searchedDate, "current", currentDate)
   const sportName = (sportId) => {
     const allSports = {
       1: "Basketball",
@@ -28,7 +29,11 @@ const GameCardsContainer = ({ games }) => {
       2: "In Progress",
       3: "Final"
     }
+    if (searchedDate < currentDate) {
+      return allStatus[3]; //some results are coming back as upcoming even though the game is in the past. This takes away that confusing result.
+    } else {
     return allStatus[statusId];
+    }
   };
 
   if(!games){
