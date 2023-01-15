@@ -34,7 +34,7 @@ const GameCardsContainer = ({ games, isPastGame }) => {
     return allStatus[statusId];
     }
   };
-
+  
   if(!games){
     return <div></div>
   }
