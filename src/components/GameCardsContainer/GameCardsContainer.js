@@ -2,12 +2,7 @@ import React, {useState, useEffect} from "react";
 import './GameCardsContainer.css';
 import GameCard from '../GameCard/GameCard.js';
 
-const GameCardsContainer = ({ games, currentDate, searchedDate }) => {
-  const [isPastGame, setIsPastGame] = useState(true);
-  console.log(isPastGame, searchedDate < currentDate);
-  useEffect(() => {
-    setIsPastGame(searchedDate < currentDate);
-  }, []);
+const GameCardsContainer = ({ games, isPastGame }) => {
   const sportName = (sportId) => {
     const allSports = {
       1: "Basketball",
@@ -28,14 +23,13 @@ const GameCardsContainer = ({ games, currentDate, searchedDate }) => {
   };
 
   const gameStatus = (statusId, isPastGame) => {
-    // console.log(statusId, isPastGame)
     const allStatus = {
       1: "Upcoming",
       2: "In Progress",
       3: "Final"
     }
     if (isPastGame) {
-      return allStatus[3]; //some results are coming back as upcoming even though the game is in the past. This takes away that confusing result.
+      return allStatus[3];
     } else {
     return allStatus[statusId];
     }

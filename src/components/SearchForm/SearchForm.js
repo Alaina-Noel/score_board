@@ -4,12 +4,14 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import GameCardsContainer from '../GameCardsContainer/GameCardsContainer.js'
 
-const SearchForm = ({ setGames, setErrorMessage }) => {
+const SearchForm = ({ setGames, setErrorMessage, setIsPastGame }) => {
   const [searchedDate, setSearchedDate] = useState("");
+  const [currentDate, setCurrentDate] = useState(new Date());
   const [domError, setDomError] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setIsPastGame(searchedDate < currentDate);
     if (searchedDate) {
       const date = searchedDate.toISOString().slice(0, 10);
       queryGames(date);
@@ -27,7 +29,6 @@ const SearchForm = ({ setGames, setErrorMessage }) => {
       .catch(error => {
         setErrorMessage(error.message);
       });
-    setCurrentDate(new Date());
   }
   const clearInputs = () => { 
     setSearchedDate("");
