@@ -32,7 +32,7 @@ const GameCardsContainer = ({ games }) => {
   };
 
   if(!games){
-    return <div>Type a date and search for a game</div>
+    return <div></div>
   }
   return (
     <div className="game-cards-container">
