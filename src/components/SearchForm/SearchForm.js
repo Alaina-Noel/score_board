@@ -7,7 +7,6 @@ import GameCardsContainer from '../GameCardsContainer/GameCardsContainer.js'
 const SearchForm = ({ setGames, setErrorMessage }) => {
   const [searchedDate, setSearchedDate] = useState("");
   const [domError, setDomError] = useState("");
-  const [currentDate, setCurrentDate] = useState(new Date());
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -32,7 +31,6 @@ const SearchForm = ({ setGames, setErrorMessage }) => {
   }
   const clearInputs = () => { 
     setSearchedDate("");
-    setCurrentDate(new Date());
     setDomError("");
   };
 
@@ -46,7 +44,7 @@ const SearchForm = ({ setGames, setErrorMessage }) => {
       />
       <GameCardsContainer 
         searchedDate={searchedDate} 
-        currentDate={currentDate} 
+        currentDate={new Date()} 
       />
       <button className="game-search-btn" onClick={(event) => handleSubmit(event)}>Search</button>
       {domError && <h4 className="error-message">{domError}</h4>}
