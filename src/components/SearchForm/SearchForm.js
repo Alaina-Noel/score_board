@@ -6,7 +6,7 @@ import GameCardsContainer from '../GameCardsContainer/GameCardsContainer.js'
 
 const SearchForm = ({ setGames, setErrorMessage, setIsPastGame }) => {
   const [searchedDate, setSearchedDate] = useState("");
-  const [currentDate, setCurrentDate] = useState(new Date());
+  const [currentDate] = useState(new Date());
   const [domError, setDomError] = useState("");
 
   const handleSubmit = (event) => {

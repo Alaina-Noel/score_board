@@ -29,7 +29,7 @@ const GameCardsContainer = ({ games, isPastGame }) => {
       3: "Final"
     }
     if (isPastGame) {
-      return allStatus[3];
+      return allStatus[3];//The data was showing some past games as status_id of 1. This handles that error.
     } else {
     return allStatus[statusId];
     }
