@@ -1,6 +1,6 @@
 import React from "react";
 import './GameCard.css'
-import noPhoto from './noPhoto.jpg'
+import noPhoto from '../../noPhoto.jpg'
 
 const GameCard = ({ awayPhoto, homePhoto, awayTeamName, homeTeamName, gameStatus, sportName, awayScore, homeScore, awayTeamInfoLink, homeTeamInfoLink }) => {
     return(
