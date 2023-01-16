@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import './SearchForm.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import GameCardsContainer from '../GameCardsContainer/GameCardsContainer.js'
 
 const SearchForm = ({ setGames, setErrorMessage, setIsPastGame }) => {
   const [searchedDate, setSearchedDate] = useState("");
