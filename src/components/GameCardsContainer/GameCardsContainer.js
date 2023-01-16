@@ -54,7 +54,9 @@ const GameCardsContainer = ({ games, isPastGame }) => {
                 gameStatus={gameStatus(game.status_id, isPastGame)}
                 sportName={sportName(game.sport_id)}
                 awayScore={game.game_teams[0].score}
-                homeScore={game.game_teams[0].score}
+                homeScore={game.game_teams[1].score}
+                awayTeamInfoLink={game.game_teams[0].team.link.webapp}
+                homeTeamInfoLink={game.game_teams[0].team.link.webapp}
                />
             </div>
           );
