@@ -68,5 +68,11 @@
   width: 100%;
   text-overflow: ellipsis;
   overflow: hidden;
+  font-size: 30px;
+  color: whitesmoke;
+}
+
+.a {
+  color:white;
 }
 

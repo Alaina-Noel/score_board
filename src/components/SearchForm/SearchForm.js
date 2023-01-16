@@ -34,7 +34,7 @@ const SearchForm = ({ setGames, setErrorMessage, setIsPastGame }) => {
     setSearchedDate("");
     setDomError("");
   };
-//TODO delete game cards container
+  
   return (
     <div className="search-area">
       <h3>Select a date to find a game</h3>
@@ -43,7 +43,6 @@ const SearchForm = ({ setGames, setErrorMessage, setIsPastGame }) => {
         onChange={date => setSearchedDate(date)}
         className="search-input"
       />
- 
       <button className="game-search-btn" onClick={(event) => handleSubmit(event)}>Search</button>
       {domError && <h4 className="error-message">{domError}</h4>}
     </div>

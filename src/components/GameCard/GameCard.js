@@ -1,15 +1,14 @@
 import React from "react";
-// import {Link} from 'react-router-dom' //TODO: add a link to team info
 import './GameCard.css'
 import noPhoto from './noPhoto.jpg'
 
-const GameCard = ({ awayPhoto, homePhoto, awayTeamName, homeTeamName, gameStatus, sportName, awayScore, homeScore }) => {
+const GameCard = ({ awayPhoto, homePhoto, awayTeamName, homeTeamName, gameStatus, sportName, awayScore, homeScore, awayTeamInfoLink, homeTeamInfoLink }) => {
     return(
         <div className='game-card'>
             <div className='game-card-title'>
                 <div className="sport-name"> {sportName} </div> 
                 <div className='team-names'>
-                    <div> {awayTeamName} at {homeTeamName}</div> 
+                    <a href={awayTeamInfoLink}>{awayTeamName}</a> at <a href={homeTeamInfoLink}>{homeTeamName}</a> 
                     <div>  {awayScore} - {homeScore} </div> 
                 </div>
                 </div>
