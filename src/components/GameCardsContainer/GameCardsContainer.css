@@ -8,7 +8,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  /* box-shadow: 2px 2px 4px #ccc; */
   flex-basis: 45%;
   height: 280px;
   margin: 30px;
@@ -72,7 +71,11 @@
   color: whitesmoke;
 }
 
-.a {
-  color:white;
+.team-names a:link,
+.team-names a:visited{
+  color: white;
 }
 
+.team-names a:hover{
+  color: green;
+}

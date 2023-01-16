@@ -8,7 +8,7 @@ const GameCard = ({ awayPhoto, homePhoto, awayTeamName, homeTeamName, gameStatus
             <div className='game-card-title'>
                 <div className="sport-name"> {sportName} </div> 
                 <div className='team-names'>
-                    <a href={awayTeamInfoLink}>{awayTeamName}</a> at <a href={homeTeamInfoLink}>{homeTeamName}</a> 
+                    <a href={awayTeamInfoLink} className='team-link'>{awayTeamName}</a> at <a href={homeTeamInfoLink} className='team-link'>{homeTeamName}</a> 
                     <div>  {awayScore} - {homeScore} </div> 
                 </div>
                 </div>
