@@ -16,7 +16,6 @@ const App = () =>  {
         <SearchForm 
           setGames={setGames} 
           setErrorMessage={setErrorMessage} 
-          isPastGame={isPastGame}
           setIsPastGame={setIsPastGame}
         />
         <GameCardsContainer 
