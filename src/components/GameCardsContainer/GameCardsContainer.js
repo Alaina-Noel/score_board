@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import './GameCardsContainer.css';
 import GameCard from '../GameCard/GameCard.js';
 
@@ -34,7 +34,7 @@ const GameCardsContainer = ({ games, isPastGame }) => {
     return allStatus[statusId];
     }
   };
-
+  
   if(!games){
     return <div></div>
   }
@@ -54,7 +54,9 @@ const GameCardsContainer = ({ games, isPastGame }) => {
                 gameStatus={gameStatus(game.status_id, isPastGame)}
                 sportName={sportName(game.sport_id)}
                 awayScore={game.game_teams[0].score}
-                homeScore={game.game_teams[0].score}
+                homeScore={game.game_teams[1].score}
+                awayTeamInfoLink={game.game_teams[0].team.link.webapp}
+                homeTeamInfoLink={game.game_teams[0].team.link.webapp}
                />
             </div>
           );

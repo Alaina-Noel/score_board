@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import './SearchForm.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import GameCardsContainer from '../GameCardsContainer/GameCardsContainer.js'
 
 const SearchForm = ({ setGames, setErrorMessage, setIsPastGame }) => {
   const [searchedDate, setSearchedDate] = useState("");
@@ -34,7 +33,7 @@ const SearchForm = ({ setGames, setErrorMessage, setIsPastGame }) => {
     setSearchedDate("");
     setDomError("");
   };
-
+  
   return (
     <div className="search-area">
       <h3>Select a date to find a game</h3>
@@ -42,10 +41,6 @@ const SearchForm = ({ setGames, setErrorMessage, setIsPastGame }) => {
         selected={searchedDate}
         onChange={date => setSearchedDate(date)}
         className="search-input"
-      />
-      <GameCardsContainer 
-        searchedDate={searchedDate} 
-        currentDate={new Date()} 
       />
       <button className="game-search-btn" onClick={(event) => handleSubmit(event)}>Search</button>
       {domError && <h4 className="error-message">{domError}</h4>}

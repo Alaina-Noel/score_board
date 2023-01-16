@@ -8,7 +8,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  /* box-shadow: 2px 2px 4px #ccc; */
   flex-basis: 45%;
   height: 280px;
   margin: 30px;
@@ -62,4 +61,21 @@
 .game-status {
   font-size: 20px;
   margin-top: 5px;
+}
+
+.team-names {
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 30px;
+  color: whitesmoke;
+}
+
+.team-names a:link,
+.team-names a:visited{
+  color: white;
+}
+
+.team-names a:hover{
+  color: green;
 }
